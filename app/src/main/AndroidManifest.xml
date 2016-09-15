@@ -24,6 +24,8 @@
 
         <activity android:name=".activities.MainActivity" android:label="@string/app_name"/>
 
+        <activity android:name=".activities.ScanActivity" android:label="@string/app_name"/>
+
     </application>
 
 </manifest>
