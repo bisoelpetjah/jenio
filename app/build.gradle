@@ -29,7 +29,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'me.dm7.barcodescanner:zbar:1.9'
 }
 repositories {
     mavenCentral()
