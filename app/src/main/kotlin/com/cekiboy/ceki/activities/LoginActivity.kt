@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import com.cekiboy.ceki.R
 
@@ -26,6 +27,7 @@ class LoginActivity: AppCompatActivity() {
     private var buttonKeypad0: Button? = null
     private var buttonKeypadBackspace: ImageButton? = null
     private var buttonKeypadEnter: ImageButton? = null
+    private var imageViewFingerprint: ImageView? = null
 
     private var pin = ""
 
@@ -46,6 +48,7 @@ class LoginActivity: AppCompatActivity() {
         buttonKeypad0 = findViewById(R.id.keypad0) as Button
         buttonKeypadBackspace = findViewById(R.id.keypadBackspace) as ImageButton
         buttonKeypadEnter = findViewById(R.id.keypadEnter) as ImageButton
+        imageViewFingerprint = findViewById(R.id.fingerprint) as ImageView
 
         buttonKeypad1?.setOnClickListener { editInput(ButtonType.BUTTON_NUMBER, "1") }
         buttonKeypad2?.setOnClickListener { editInput(ButtonType.BUTTON_NUMBER, "2") }
