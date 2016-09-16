@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.View
 import com.cekiboy.ceki.R
 
 /**
@@ -25,10 +24,6 @@ class MainActivity: AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        buttonScan?.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                startActivity(Intent(this@MainActivity, ScanActivity::class.java))
-            }
-        })
+        buttonScan?.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
     }
 }

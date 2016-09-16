@@ -2,8 +2,10 @@
     package="com.cekiboy.ceki">
 
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.fingerprint" android:required="false"/>
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.LoginActivity" android:label="@string/app_name"/>
 
         <activity android:name=".activities.MainActivity" android:label="@string/app_name"/>
 

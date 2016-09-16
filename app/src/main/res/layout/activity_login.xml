@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true">
+    <TextView
+        android:id="@+id/pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="64sp"
+        android:textColor="@android:color/white"/>
+
+    <View
+        android:layout_width="160dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/pin"
+        android:layout_marginBottom="64dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pin">
+        <TableRow>
+            <Button
+                android:id="@+id/keypad1"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_1"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad2"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_2"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad3"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_3"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/keypad4"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_4"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad5"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_5"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad6"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_6"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/keypad7"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_7"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad8"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_8"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/keypad9"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_9"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+        </TableRow>
+
+        <TableRow>
+            <ImageButton
+                android:id="@+id/keypadBackspace"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:src="@drawable/ic_backspace"
+                android:background="@android:color/transparent"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/keypad0"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/button_keypad_0"
+                android:textSize="36sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/keypadEnter"
+                android:layout_width="92dp"
+                android:layout_height="72dp"
+                android:padding="0dp"
+                android:src="@drawable/ic_ok"
+                android:background="@android:color/transparent"
+                android:gravity="center"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
