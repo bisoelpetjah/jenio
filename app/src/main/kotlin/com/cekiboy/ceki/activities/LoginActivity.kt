@@ -1,18 +1,30 @@
 package com.cekiboy.ceki.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
+import android.support.v4.os.CancellationSignal
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.cekiboy.ceki.R
+import java.security.KeyStore
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
 
 /**
  * Created by irvan on 9/16/16.
  */
 class LoginActivity: AppCompatActivity() {
+
+    private val ANDROID_KEY_STORE = "AndroidKeyStore"
+    private val CIPHER_KEY_NAME = "CEKI"
 
     private var textViewPin: TextView? = null
     private var buttonKeypad1: Button? = null
@@ -62,6 +74,43 @@ class LoginActivity: AppCompatActivity() {
         buttonKeypad0?.setOnClickListener { editInput(ButtonType.BUTTON_NUMBER, "0") }
         buttonKeypadBackspace?.setOnClickListener { editInput(ButtonType.BUTTON_BACKSPACE) }
         buttonKeypadEnter?.setOnClickListener { editInput(ButtonType.BUTTON_ENTER) }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && FingerprintManagerCompat.from(this).isHardwareDetected) {
+            imageViewFingerprint?.visibility = View.VISIBLE
+
+            try {
+                val keystore = KeyStore.getInstance(ANDROID_KEY_STORE)
+                val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, ANDROID_KEY_STORE)
+                val cipher = Cipher.getInstance("${KeyProperties.KEY_ALGORITHM_AES}/${KeyProperties.BLOCK_MODE_CBC}/${KeyProperties.ENCRYPTION_PADDING_PKCS7}")
+                val parameterSpec = KeyGenParameterSpec.Builder(CIPHER_KEY_NAME, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
+                        .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                        .setUserAuthenticationRequired(true)
+                        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
+                        .build()
+
+                keystore.load(null)
+                keyGenerator.init(parameterSpec)
+                keyGenerator.generateKey()
+
+                val secretKey = keystore.getKey(CIPHER_KEY_NAME, null)
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+
+                val cryptoObject = FingerprintManagerCompat.CryptoObject(cipher)
+
+                val cancellationSignal = CancellationSignal()
+                val authCallback = object : FingerprintManagerCompat.AuthenticationCallback() {
+
+                    override fun onAuthenticationSucceeded(result: FingerprintManagerCompat.AuthenticationResult?) {
+                        finish()
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    }
+                }
+
+                FingerprintManagerCompat.from(this).authenticate(cryptoObject, 0, cancellationSignal, authCallback, null)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     private fun editInput(pressedButton: ButtonType, buttonNumber: String? = null) {
