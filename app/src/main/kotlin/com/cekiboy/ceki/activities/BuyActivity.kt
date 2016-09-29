@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.cekiboy.ceki.R
+import com.cekiboy.ceki.utils.PriceUtils
 
 /**
  * Created by irvan on 9/29/16.
@@ -71,7 +72,7 @@ class BuyActivity: AppCompatActivity() {
 
             itemNameTextView?.text = "Susu Dancow 1+"
             itemDescriptionTextView?.text = "DANCOW 1+ adalah susu pertumbuhan untuk anak usia 1-3 tahun dengan kandungan EXCELNUTRI+ yang merupakan inovasi terbaru dari Nestlé Research Centre dengan formula yang telah disempurnakan. Mengandung 3 nutrisi penting untuk perlindungan, perkembangan otak, dan pertumbuhan fisik."
-            priceTextView?.text = "Rp200.000,00"
+            priceTextView?.text = PriceUtils.formatNumberToRupiah(10000000)
 
             loadingProgress?.visibility = View.GONE
             contentView?.visibility = View.VISIBLE
