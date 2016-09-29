@@ -1,6 +1,7 @@
 package com.cekiboy.ceki.activities
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -8,7 +9,6 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import android.widget.Toast
 import com.cekiboy.ceki.R
 import me.dm7.barcodescanner.zbar.BarcodeFormat
 import me.dm7.barcodescanner.zbar.Result
@@ -75,7 +75,10 @@ class ScanActivity: AppCompatActivity(), ZBarScannerView.ResultHandler {
     }
 
     override fun handleResult(rawResult: Result?) {
-        Toast.makeText(this, rawResult?.contents, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, BuyActivity::class.java)
+        intent.putExtra(BuyActivity.EXTRA_ITEM_ID, rawResult?.contents)
+
         finish()
+        startActivity(Intent(this, BuyActivity::class.java))
     }
 }

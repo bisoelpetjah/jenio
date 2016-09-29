@@ -12,4 +12,7 @@
     <string name="button_keypad_8">8</string>
     <string name="button_keypad_9">9</string>
     <string name="button_keypad_0">0</string>
+
+    <string name="label_price">Total harga:</string>
+    <string name="button_buy">Beli</string>
 </resources>

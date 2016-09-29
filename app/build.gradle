@@ -32,6 +32,7 @@ dependencies {
     compile 'com.android.support:design:23.4.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'me.dm7.barcodescanner:zbar:1.9'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
 repositories {
     mavenCentral()
