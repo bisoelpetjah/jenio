@@ -34,6 +34,7 @@ class ScanActivity: AppCompatActivity(), ZBarScannerView.ResultHandler {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = null
 
         scannerView?.setFormats(arrayListOf(BarcodeFormat.QRCODE))
         scannerView?.setResultHandler(this)

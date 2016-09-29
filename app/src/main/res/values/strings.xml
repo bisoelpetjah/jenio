@@ -13,6 +13,7 @@
     <string name="button_keypad_9">9</string>
     <string name="button_keypad_0">0</string>
 
+    <string name="action_share">Bagikan</string>
     <string name="label_amount">Jumlah</string>
     <string name="button_amount_increase">+</string>
     <string name="button_amount_decrease">-</string>
