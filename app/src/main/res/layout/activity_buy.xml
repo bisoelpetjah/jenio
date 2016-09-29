@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/buy"
-        android:paddingLeft="5dp"
+        android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@color/colorBg"
@@ -48,7 +48,7 @@
         android:layout_gravity="end"
         android:paddingLeft="3dp"
         android:paddingTop="10dp"
-        android:paddingRight="5dp"
+        android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:background="@color/colorBg"
         android:textSize="20sp"
@@ -56,12 +56,63 @@
         android:textStyle="bold"
         android:textAlignment="viewEnd"/>
 
-    <View
-        android:id="@+id/separator"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
+    <TextView
+        android:id="@+id/labelAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@id/labelPrice"
-        android:background="@android:color/darker_gray"/>
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/colorBg"
+        android:text="@string/label_amount"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <LinearLayout
+        android:id="@+id/amountLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/price"
+        android:layout_toRightOf="@id/labelAmount"
+        android:layout_alignTop="@id/labelAmount"
+        android:paddingTop="7dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="7dp"
+        android:background="@color/colorBg"
+        android:orientation="horizontal"
+        android:gravity="center|end">
+        <Button
+            android:id="@+id/amountDecrease"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_amount_decrease"
+            android:text="@string/button_amount_decrease"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/labelPrice"
+            android:minWidth="40dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_amount"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/amountIncrease"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_amount_increase"
+            android:text="@string/button_amount_increase"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/loading"
@@ -75,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:layout_above="@id/separator"
+        android:layout_above="@id/amountLayout"
         android:visibility="invisible">
         <LinearLayout
             android:layout_width="match_parent"

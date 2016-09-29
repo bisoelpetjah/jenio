@@ -26,8 +26,13 @@ class BuyActivity: AppCompatActivity() {
     private var itemImageView: ImageView? = null
     private var itemNameTextView: TextView? = null
     private var itemDescriptionTextView: TextView? = null
+    private var amountTextView: TextView? = null
+    private var amountIncreaseButton: Button? = null
+    private var amountDecreaseButton: Button? = null
     private var priceTextView: TextView? = null
     private var buyButton: Button? = null
+
+    private var amount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +44,9 @@ class BuyActivity: AppCompatActivity() {
         itemImageView = findViewById(R.id.itemImage) as ImageView
         itemNameTextView = findViewById(R.id.itemName) as TextView
         itemDescriptionTextView = findViewById(R.id.itemDescription) as TextView
+        amountTextView = findViewById(R.id.amount) as TextView
+        amountIncreaseButton = findViewById(R.id.amountIncrease) as Button
+        amountDecreaseButton = findViewById(R.id.amountDecrease) as Button
         priceTextView = findViewById(R.id.price) as TextView
         buyButton = findViewById(R.id.buy) as Button
 
@@ -46,6 +54,17 @@ class BuyActivity: AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = null
+
+        updateAmount()
+
+        amountIncreaseButton?.setOnClickListener {
+            ++amount
+            updateAmount()
+        }
+        amountDecreaseButton?.setOnClickListener {
+            if (amount > 1) --amount
+            updateAmount()
+        }
 
         performFetchItemDetail(intent.getStringExtra(EXTRA_ITEM_ID))
     }
@@ -60,6 +79,12 @@ class BuyActivity: AppCompatActivity() {
         }
     }
 
+    private fun updateAmount() {
+        amountTextView?.text = "$amount"
+        priceTextView?.text = PriceUtils.formatNumberToRupiah(amount * 10000000)
+
+    }
+
     private fun performFetchItemDetail(id: String?) {
         loadingProgress?.visibility = View.VISIBLE
         contentView?.visibility = View.INVISIBLE
@@ -72,7 +97,7 @@ class BuyActivity: AppCompatActivity() {
 
             itemNameTextView?.text = "Susu Dancow 1+"
             itemDescriptionTextView?.text = "DANCOW 1+ adalah susu pertumbuhan untuk anak usia 1-3 tahun dengan kandungan EXCELNUTRI+ yang merupakan inovasi terbaru dari Nestlé Research Centre dengan formula yang telah disempurnakan. Mengandung 3 nutrisi penting untuk perlindungan, perkembangan otak, dan pertumbuhan fisik."
-            priceTextView?.text = PriceUtils.formatNumberToRupiah(10000000)
+            updateAmount()
 
             loadingProgress?.visibility = View.GONE
             contentView?.visibility = View.VISIBLE
