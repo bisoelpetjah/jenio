@@ -1,7 +1,6 @@
 package com.cekiboy.ceki.activities
 
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
@@ -10,8 +9,12 @@ import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.cekiboy.ceki.R
+import com.cekiboy.ceki.http.WebService
 import com.cekiboy.ceki.models.Item
 import com.cekiboy.ceki.utils.PriceUtils
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by irvan on 9/29/16.
@@ -95,28 +98,26 @@ class BuyActivity: AppCompatActivity() {
         contentView?.visibility = View.INVISIBLE
         buyButton?.isEnabled = false
 
-        Handler().postDelayed({
-            // TODO: remove dummy
-            item = Item()
-            item!!.name = "Susu Dancow 1+"
-            item!!.image = "http://www.rajasusu.com/image/cache/data/susu%20batita%201-3%20tahun/DANCOW%201+%20VANILA%201000G%20copy-800x800.jpg"
-            item!!.description = "DANCOW 1+ adalah susu pertumbuhan untuk anak usia 1-3 tahun dengan kandungan EXCELNUTRI+ yang merupakan inovasi terbaru dari Nestlé Research Centre dengan formula yang telah disempurnakan. Mengandung 3 nutrisi penting untuk perlindungan, perkembangan otak, dan pertumbuhan fisik."
-            item!!.price = 10000000
-            item!!.stock = 5
+        WebService.services!!.getItem(id).enqueue(object : Callback<Item> {
+            override fun onResponse(call: Call<Item>?, response: Response<Item>?) {
+                item = response?.body()
 
-            updateAmount()
+                Glide.with(this@BuyActivity)
+                        .load(item?.image)
+                        .into(itemImageView)
 
-            Glide.with(this)
-                    .load(item?.image)
-                    .into(itemImageView)
+                itemNameTextView?.text = item?.name
+                itemDescriptionTextView?.text = item?.description
+                updateAmount()
 
-            itemNameTextView?.text = item?.name
-            itemDescriptionTextView?.text = item?.description
-            updateAmount()
+                loadingProgress?.visibility = View.GONE
+                contentView?.visibility = View.VISIBLE
+                buyButton?.isEnabled = true
 
-            loadingProgress?.visibility = View.GONE
-            contentView?.visibility = View.VISIBLE
-            buyButton?.isEnabled = true
-        }, 1000)
+                updateAmount()
+            }
+
+            override fun onFailure(call: Call<Item>?, t: Throwable?) {}
+        })
     }
 }

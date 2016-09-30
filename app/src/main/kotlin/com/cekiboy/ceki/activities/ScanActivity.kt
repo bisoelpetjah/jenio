@@ -80,6 +80,6 @@ class ScanActivity: AppCompatActivity(), ZBarScannerView.ResultHandler {
         intent.putExtra(BuyActivity.EXTRA_ITEM_ID, rawResult?.contents)
 
         finish()
-        startActivity(Intent(this, BuyActivity::class.java))
+        startActivity(intent)
     }
 }

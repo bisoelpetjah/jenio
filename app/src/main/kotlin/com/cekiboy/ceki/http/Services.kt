@@ -10,6 +10,6 @@ import retrofit2.http.Path
  */
 interface Services {
 
-    @GET("items/{id}")
-    fun getItem(@Path("id") id: String): Call<Item>
+    @GET("item/{id}/get")
+    fun getItem(@Path("id") id: String?): Call<Item>
 }

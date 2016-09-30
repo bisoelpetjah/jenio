@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object WebService {
 
-    private val BASE_URL = "https://staging.sistemsista.com/"
+    private val BASE_URL = "http://bri.sokcoba.in/"
 
     var services: Services? = null
         private set
