@@ -15,4 +15,6 @@ class User {
 
     @SerializedName("image")
     var picture: String? = null
+
+    var balance: Long = 0
 }

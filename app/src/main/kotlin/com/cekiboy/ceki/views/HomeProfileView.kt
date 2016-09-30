@@ -13,6 +13,7 @@ import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.cekiboy.ceki.R
 import com.cekiboy.ceki.models.User
+import com.cekiboy.ceki.utils.PriceUtils
 
 /**
  * Created by irvan on 9/30/16.
@@ -34,6 +35,7 @@ class HomeProfileView: RelativeLayout {
     private var pictureImageView: ImageView? = null
     private var nameTextView: TextView? = null
     private var emailTextView: TextView? = null
+    private var balanceTextView: TextView? = null
 
     var user: User? = null
         set(value) {
@@ -53,6 +55,8 @@ class HomeProfileView: RelativeLayout {
 
             nameTextView?.text = value?.name
             emailTextView?.text = value?.email
+
+            if (value?.balance != null) balanceTextView?.text = PriceUtils.formatNumberToRupiah(value?.balance!!)
         }
 
     private fun init() {
@@ -61,5 +65,6 @@ class HomeProfileView: RelativeLayout {
         pictureImageView = findViewById(R.id.picture) as ImageView
         nameTextView = findViewById(R.id.name) as TextView
         emailTextView = findViewById(R.id.email) as TextView
+        balanceTextView = findViewById(R.id.balance) as TextView
     }
 }
