@@ -11,6 +11,8 @@ class User {
 
     var name: String? = null
 
+    var email: String? = null
+
     @SerializedName("image")
     var picture: String? = null
 }
