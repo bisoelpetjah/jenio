@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import com.cekiboy.ceki.R
 import com.cekiboy.ceki.adapters.HomeAdapter
 import com.cekiboy.ceki.http.WebService
+import com.cekiboy.ceki.models.Transaction
 import com.cekiboy.ceki.models.User
 import com.cekiboy.ceki.utils.PreferencesHelper
 import retrofit2.Call
@@ -49,10 +51,22 @@ class MainActivity: AppCompatActivity() {
         WebService.services!!.getUser(PreferencesHelper.userId).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>?) {
                 homeAdapter.user = response?.body()
-                homeAdapter.notifyDataSetChanged()
+
+                performGetTransactionHistory()
             }
 
             override fun onFailure(call: Call<User>?, t: Throwable?) {}
+        })
+    }
+
+    private fun performGetTransactionHistory() {
+        WebService.services!!.getTransactionHistory(PreferencesHelper.userId).enqueue(object : Callback<List<Transaction>> {
+            override fun onResponse(call: Call<List<Transaction>>?, response: Response<List<Transaction>>?) {
+                homeAdapter.transactionList.addAll(response?.body() ?: arrayListOf())
+                homeAdapter.notifyDataSetChanged()
+            }
+
+            override fun onFailure(call: Call<List<Transaction>>?, t: Throwable?) {}
         })
     }
 }

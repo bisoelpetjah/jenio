@@ -12,12 +12,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 object WebService {
 
     private val BASE_URL = "http://bri.sokcoba.in/"
+    private val DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
     var services: Services? = null
         private set
 
     fun init() {
-        val gson = GsonBuilder().create()
+        val gson = GsonBuilder()
+                .setDateFormat(DATE_FORMAT)
+                .create()
+
         val converter = GsonConverterFactory.create(gson)
 
         val logger = HttpLoggingInterceptor()
