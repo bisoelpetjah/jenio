@@ -42,4 +42,22 @@
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/balance"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/separator"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label_transaction_history"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimaryDark"/>
 </RelativeLayout>
