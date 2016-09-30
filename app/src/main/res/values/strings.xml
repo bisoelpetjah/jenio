@@ -15,6 +15,7 @@
 
     <string name="action_share">Bagikan</string>
     <string name="label_amount">Jumlah</string>
+    <string name="label_merchant">Penyedia:</string>
     <string name="button_amount_increase">+</string>
     <string name="button_amount_decrease">-</string>
     <string name="label_price">Total harga</string>

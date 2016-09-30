@@ -129,10 +129,9 @@
         android:layout_below="@id/toolbar"
         android:layout_above="@id/amountLayout"
         android:visibility="invisible">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
@@ -146,6 +145,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_below="@id/itemImage"
                 android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
@@ -159,7 +159,40 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_below="@id/itemName"
                 android:textAlignment="center"/>
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/labelMerchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/itemDescription"
+                android:text="@string/label_merchant"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <ImageView
+                android:id="@+id/merchantPicture"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@id/labelMerchant"/>
+
+            <TextView
+                android:id="@+id/merchantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@id/labelMerchant"
+                android:layout_toRightOf="@id/merchantPicture"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

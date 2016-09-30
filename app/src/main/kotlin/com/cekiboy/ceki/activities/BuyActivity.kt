@@ -1,6 +1,8 @@
 package com.cekiboy.ceki.activities
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
@@ -8,6 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.animation.GlideAnimation
+import com.bumptech.glide.request.target.SimpleTarget
 import com.cekiboy.ceki.R
 import com.cekiboy.ceki.http.WebService
 import com.cekiboy.ceki.models.Item
@@ -31,6 +35,8 @@ class BuyActivity: AppCompatActivity() {
     private var itemImageView: ImageView? = null
     private var itemNameTextView: TextView? = null
     private var itemDescriptionTextView: TextView? = null
+    private var merchantPictureImageView: ImageView? = null
+    private var merchantNameTextView: TextView? = null
     private var amountTextView: TextView? = null
     private var amountIncreaseButton: Button? = null
     private var amountDecreaseButton: Button? = null
@@ -50,6 +56,8 @@ class BuyActivity: AppCompatActivity() {
         itemImageView = findViewById(R.id.itemImage) as ImageView
         itemNameTextView = findViewById(R.id.itemName) as TextView
         itemDescriptionTextView = findViewById(R.id.itemDescription) as TextView
+        merchantPictureImageView = findViewById(R.id.merchantPicture) as ImageView
+        merchantNameTextView = findViewById(R.id.merchantName) as TextView
         amountTextView = findViewById(R.id.amount) as TextView
         amountIncreaseButton = findViewById(R.id.amountIncrease) as Button
         amountDecreaseButton = findViewById(R.id.amountDecrease) as Button
@@ -108,6 +116,21 @@ class BuyActivity: AppCompatActivity() {
 
                 itemNameTextView?.text = item?.name
                 itemDescriptionTextView?.text = item?.description
+
+                Glide.with(this@BuyActivity)
+                        .load(item?.merchant?.picture)
+                        .asBitmap()
+                        .into(object : SimpleTarget<Bitmap>() {
+                            override fun onResourceReady(resource: Bitmap?, glideAnimation: GlideAnimation<in Bitmap>?) {
+                                val drawable = RoundedBitmapDrawableFactory.create(resources, resource)
+                                drawable.isCircular = true
+
+                                merchantPictureImageView?.setImageDrawable(drawable)
+                            }
+                        })
+
+                merchantNameTextView?.text = item?.merchant?.name
+
                 updateAmount()
 
                 loadingProgress?.visibility = View.GONE

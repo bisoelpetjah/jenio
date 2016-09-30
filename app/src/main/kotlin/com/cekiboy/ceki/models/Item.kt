@@ -19,4 +19,6 @@ class Item {
     var price: Long = 0
 
     var stock: Int = 0
+
+    var merchant: User? = null
 }
