@@ -8,11 +8,11 @@ import java.util.*
  */
 object PriceUtils {
 
-    fun formatNumberToPrice(number: Int): String {
+    fun formatNumberToPrice(number: Long): String {
         return NumberFormat.getInstance(Locale("id")).format(number)
     }
 
-    fun formatNumberToRupiah(number: Int): String {
+    fun formatNumberToRupiah(number: Long): String {
         return "Rp${formatNumberToPrice(number)},00"
     }
 }

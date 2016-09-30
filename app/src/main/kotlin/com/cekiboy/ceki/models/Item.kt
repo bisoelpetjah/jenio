@@ -16,5 +16,7 @@ class Item {
 
     var description: String? = null
 
-    var stock: String? = null
+    var price: Long = 0
+
+    var stock: Int = 0
 }

@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.cekiboy.ceki.R
+import com.cekiboy.ceki.models.Item
 import com.cekiboy.ceki.utils.PriceUtils
 
 /**
@@ -33,7 +34,8 @@ class BuyActivity: AppCompatActivity() {
     private var priceTextView: TextView? = null
     private var buyButton: Button? = null
 
-    private var amount = 1
+    private var item: Item? = null
+    private var amount = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +58,8 @@ class BuyActivity: AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = null
 
-        updateAmount()
-
         amountIncreaseButton?.setOnClickListener {
-            ++amount
+            if (item?.stock!! > amount) ++amount
             updateAmount()
         }
         amountDecreaseButton?.setOnClickListener {
@@ -87,8 +87,7 @@ class BuyActivity: AppCompatActivity() {
 
     private fun updateAmount() {
         amountTextView?.text = "$amount"
-        priceTextView?.text = PriceUtils.formatNumberToRupiah(amount * 10000000)
-
+        priceTextView?.text = PriceUtils.formatNumberToRupiah(item?.price!! * amount)
     }
 
     private fun performFetchItemDetail(id: String?) {
@@ -97,12 +96,22 @@ class BuyActivity: AppCompatActivity() {
         buyButton?.isEnabled = false
 
         Handler().postDelayed({
+            // TODO: remove dummy
+            item = Item()
+            item!!.name = "Susu Dancow 1+"
+            item!!.image = "http://www.rajasusu.com/image/cache/data/susu%20batita%201-3%20tahun/DANCOW%201+%20VANILA%201000G%20copy-800x800.jpg"
+            item!!.description = "DANCOW 1+ adalah susu pertumbuhan untuk anak usia 1-3 tahun dengan kandungan EXCELNUTRI+ yang merupakan inovasi terbaru dari Nestlé Research Centre dengan formula yang telah disempurnakan. Mengandung 3 nutrisi penting untuk perlindungan, perkembangan otak, dan pertumbuhan fisik."
+            item!!.price = 10000000
+            item!!.stock = 5
+
+            updateAmount()
+
             Glide.with(this)
-                    .load("http://www.rajasusu.com/image/cache/data/susu%20batita%201-3%20tahun/DANCOW%201+%20VANILA%201000G%20copy-800x800.jpg")
+                    .load(item?.image)
                     .into(itemImageView)
 
-            itemNameTextView?.text = "Susu Dancow 1+"
-            itemDescriptionTextView?.text = "DANCOW 1+ adalah susu pertumbuhan untuk anak usia 1-3 tahun dengan kandungan EXCELNUTRI+ yang merupakan inovasi terbaru dari Nestlé Research Centre dengan formula yang telah disempurnakan. Mengandung 3 nutrisi penting untuk perlindungan, perkembangan otak, dan pertumbuhan fisik."
+            itemNameTextView?.text = item?.name
+            itemDescriptionTextView?.text = item?.description
             updateAmount()
 
             loadingProgress?.visibility = View.GONE
