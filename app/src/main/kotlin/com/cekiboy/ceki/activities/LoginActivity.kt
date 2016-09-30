@@ -14,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.cekiboy.ceki.R
+import com.cekiboy.ceki.utils.PreferencesHelper
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -101,8 +102,7 @@ class LoginActivity: AppCompatActivity() {
                 val authCallback = object : FingerprintManagerCompat.AuthenticationCallback() {
 
                     override fun onAuthenticationSucceeded(result: FingerprintManagerCompat.AuthenticationResult?) {
-                        finish()
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        onAuthSuccess()
                     }
                 }
 
@@ -136,12 +136,18 @@ class LoginActivity: AppCompatActivity() {
 
     private fun submit() {
         if (pin == "1589") {
-            finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            onAuthSuccess()
         } else {
             pin = ""
             textViewPin?.text = ""
         }
+    }
+
+    private fun onAuthSuccess() {
+        PreferencesHelper.userId = "57eca26dd4050d13616131ae"
+
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private enum class ButtonType {
