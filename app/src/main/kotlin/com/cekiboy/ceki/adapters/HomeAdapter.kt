@@ -45,7 +45,7 @@ class HomeAdapter(): RecyclerView.Adapter<HomeAdapter.HomeItemViewHolder>() {
             }
             else -> {
                 val view = View(parent!!.context)
-                view.minimumHeight = DimensionHelper.dpToPx(parent!!.context, 64F).toInt()
+                view.minimumHeight = DimensionHelper.dpToPx(parent!!.context, 120F).toInt()
 
                 return HomeItemViewHolder(view)
             }

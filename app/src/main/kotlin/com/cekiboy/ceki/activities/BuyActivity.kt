@@ -1,5 +1,6 @@
 package com.cekiboy.ceki.activities
 
+import android.app.ProgressDialog
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
@@ -15,6 +16,8 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.cekiboy.ceki.R
 import com.cekiboy.ceki.http.WebService
 import com.cekiboy.ceki.models.Item
+import com.cekiboy.ceki.models.Transaction
+import com.cekiboy.ceki.utils.PreferencesHelper
 import com.cekiboy.ceki.utils.PriceUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,7 +47,7 @@ class BuyActivity: AppCompatActivity() {
     private var buyButton: Button? = null
 
     private var item: Item? = null
-    private var amount = 1L
+    private var amount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,9 +76,14 @@ class BuyActivity: AppCompatActivity() {
             if (item?.stock!! > amount) ++amount
             updateAmount()
         }
+
         amountDecreaseButton?.setOnClickListener {
             if (amount > 1) --amount
             updateAmount()
+        }
+
+        buyButton?.setOnClickListener {
+            performBuyItem()
         }
 
         performFetchItemDetail(intent.getStringExtra(EXTRA_ITEM_ID))
@@ -131,8 +139,6 @@ class BuyActivity: AppCompatActivity() {
 
                 merchantNameTextView?.text = item?.merchant?.name
 
-                updateAmount()
-
                 loadingProgress?.visibility = View.GONE
                 contentView?.visibility = View.VISIBLE
                 buyButton?.isEnabled = true
@@ -141,6 +147,23 @@ class BuyActivity: AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Item>?, t: Throwable?) {}
+        })
+    }
+
+    private fun performBuyItem() {
+        val dialog = ProgressDialog.show(this, null, resources.getString(R.string.progress_buying), true, false)
+
+        WebService.services!!.buyItem(PreferencesHelper.userId, item?.id, amount).enqueue(object : Callback<Transaction> {
+            override fun onResponse(call: Call<Transaction>?, response: Response<Transaction>?) {
+                dialog.setCancelable(true)
+                dialog.cancel()
+
+                Toast.makeText(this@BuyActivity, R.string.buy_successful, Toast.LENGTH_SHORT).show()
+
+                finish()
+            }
+
+            override fun onFailure(call: Call<Transaction>?, t: Throwable?) {}
         })
     }
 }

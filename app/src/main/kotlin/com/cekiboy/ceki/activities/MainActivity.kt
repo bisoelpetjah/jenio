@@ -47,6 +47,12 @@ class MainActivity: AppCompatActivity() {
         performGetCurrentUser()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        performGetTransactionHistory()
+    }
+
     private fun performGetCurrentUser() {
         WebService.services!!.getUser(PreferencesHelper.userId).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>?, response: Response<User>?) {
@@ -62,6 +68,7 @@ class MainActivity: AppCompatActivity() {
     private fun performGetTransactionHistory() {
         WebService.services!!.getTransactionHistory(PreferencesHelper.userId).enqueue(object : Callback<List<Transaction>> {
             override fun onResponse(call: Call<List<Transaction>>?, response: Response<List<Transaction>>?) {
+                homeAdapter.transactionList.clear()
                 homeAdapter.transactionList.addAll(response?.body() ?: arrayListOf())
                 homeAdapter.notifyDataSetChanged()
             }

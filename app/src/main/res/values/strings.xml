@@ -22,4 +22,6 @@
     <string name="button_amount_decrease">-</string>
     <string name="label_price">Total harga</string>
     <string name="button_buy">Beli</string>
+    <string name="progress_buying">Pembayaran sedang diproses</string>
+    <string name="buy_successful">Transaksi berhasil</string>
 </resources>
