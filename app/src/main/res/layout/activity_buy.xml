@@ -135,7 +135,7 @@
             <ImageView
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -176,8 +176,8 @@
 
             <ImageView
                 android:id="@+id/merchantPicture"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_marginLeft="15dp"
                 android:layout_below="@id/labelMerchant"/>
 
@@ -185,7 +185,7 @@
                 android:id="@+id/merchantName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_below="@id/labelMerchant"
