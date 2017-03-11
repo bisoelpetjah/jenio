@@ -102,7 +102,7 @@ class LoginActivity: AppCompatActivity() {
                 val authCallback = object : FingerprintManagerCompat.AuthenticationCallback() {
 
                     override fun onAuthenticationSucceeded(result: FingerprintManagerCompat.AuthenticationResult?) {
-                        onAuthSuccess()
+                        onAuthSuccess(false)
                     }
                 }
 
@@ -136,15 +136,19 @@ class LoginActivity: AppCompatActivity() {
 
     private fun submit() {
         if (pin == "1589") {
-            onAuthSuccess()
+            onAuthSuccess(true)
         } else {
             pin = ""
             textViewPin?.text = ""
         }
     }
 
-    private fun onAuthSuccess() {
-        PreferencesHelper.userId = "2"
+    private fun onAuthSuccess(isMerchant: Boolean) {
+        if (isMerchant) {
+            PreferencesHelper.userId = "1"
+        } else {
+            PreferencesHelper.userId = "2"
+        }
 
         finish()
         startActivity(Intent(this, MainActivity::class.java))

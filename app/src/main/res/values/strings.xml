@@ -24,4 +24,6 @@
     <string name="button_buy">Beli</string>
     <string name="progress_buying">Pembayaran sedang diproses</string>
     <string name="buy_successful">Transaksi berhasil</string>
+
+    <string name="nfc_prompt">Tempelkan bagian belakang perangkat Anda dengan perangkat merchant.</string>
 </resources>
