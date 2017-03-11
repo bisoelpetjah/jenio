@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  */
 class User {
 
-    var id: String? = null
+    var id: Int = 0
 
     var name: String? = null
 

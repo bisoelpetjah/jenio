@@ -144,7 +144,7 @@ class LoginActivity: AppCompatActivity() {
     }
 
     private fun onAuthSuccess() {
-        PreferencesHelper.userId = "57eca26dd4050d13616131ae"
+        PreferencesHelper.userId = "2"
 
         finish()
         startActivity(Intent(this, MainActivity::class.java))

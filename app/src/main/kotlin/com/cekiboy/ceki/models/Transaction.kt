@@ -8,7 +8,7 @@ import java.util.*
  */
 class Transaction {
 
-    var id: String? = null
+    var id: Int = 0
 
     var item: Item? = null
 
