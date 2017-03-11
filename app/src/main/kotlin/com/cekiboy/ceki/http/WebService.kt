@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object WebService {
 
-    private val BASE_URL = "http://bri.sokcoba.in/"
+    private val BASE_URL = "http://128.199.73.46:1337/"
     private val DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
     var services: Services? = null
