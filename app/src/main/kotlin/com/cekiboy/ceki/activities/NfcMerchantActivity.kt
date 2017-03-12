@@ -47,7 +47,7 @@ class NfcMerchantActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buy)
+        setContentView(R.layout.activity_nfc_merchant)
 
         toolbar = findViewById(R.id.toolbar) as Toolbar
         loadingProgress = findViewById(R.id.loading) as ProgressBar
