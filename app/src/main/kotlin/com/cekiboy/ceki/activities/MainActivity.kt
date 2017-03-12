@@ -56,7 +56,7 @@ class MainActivity: AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
 
-        performGetTransactionHistory()
+        performGetCurrentUser()
     }
 
     private fun performGetCurrentUser() {
