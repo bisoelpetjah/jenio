@@ -42,7 +42,7 @@ class MainActivity: AppCompatActivity() {
 
         buttonQr?.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
         if (PreferencesHelper.userId == "1") {
-            buttonNfc?.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
+            buttonNfc?.setOnClickListener { startActivity(Intent(this, MerchantActivity::class.java)) }
         } else {
             buttonNfc?.setOnClickListener { startActivity(Intent(this, NfcActivity::class.java)) }
         }

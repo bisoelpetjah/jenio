@@ -17,6 +17,9 @@ interface Services {
     @GET("user/{id}/transaction")
     fun getTransactionHistory(@Path("id") id: String?): Call<List<Transaction>>
 
+    @GET("user/{id}/showcase_api")
+    fun getShowcase(@Path("id") id: String?): Call<List<Item>>
+
     @GET("item/{id}/get")
     fun getItem(@Path("id") id: String?): Call<Item>
 
