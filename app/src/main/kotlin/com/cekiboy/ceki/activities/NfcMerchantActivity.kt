@@ -65,7 +65,7 @@ class NfcMerchantActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = null
+        supportActionBar?.setTitle(R.string.title_nfc_merchant)
 
         amountIncreaseButton?.setOnClickListener {
             if (item?.stock!! > amount) ++amount

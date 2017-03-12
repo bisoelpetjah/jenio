@@ -70,7 +70,7 @@ class BuyActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = null
+        supportActionBar?.setTitle(R.string.title_buy)
 
         amountIncreaseButton?.setOnClickListener {
             if (item?.stock!! > amount) ++amount
