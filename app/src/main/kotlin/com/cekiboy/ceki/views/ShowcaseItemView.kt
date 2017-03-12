@@ -60,7 +60,7 @@ class ShowcaseItemView : RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.layout_showcase_item, this, true)
 
         pictureImageView = findViewById(R.id.picture) as ImageView
-        nameTextView = findViewById(R.id.merchant) as TextView
+        nameTextView = findViewById(R.id.name) as TextView
         priceTextView = findViewById(R.id.price) as TextView
     }
 }

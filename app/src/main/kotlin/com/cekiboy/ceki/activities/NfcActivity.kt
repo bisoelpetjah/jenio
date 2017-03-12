@@ -22,7 +22,7 @@ class NfcActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = null
+        supportActionBar?.setTitle(R.string.title_nfc)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

@@ -36,7 +36,7 @@ class MerchantActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = null
+        supportActionBar?.setTitle(R.string.title_showcase)
 
         recyclerView?.adapter = showcaseAdapter
         recyclerView?.layoutManager = LinearLayoutManager(this)

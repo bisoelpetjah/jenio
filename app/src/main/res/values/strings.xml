@@ -15,6 +15,13 @@
 
     <string name="label_transaction_history">Riwayat Transaksi</string>
 
+    <string name="title_showcase">Katalog</string>
+
+    <string name="title_qr">Scan Cekibon</string>
+
+    <string name="title_nfc">Scan dengan NFC</string>
+    <string name="nfc_prompt">Tempelkan bagian belakang perangkat Anda dengan perangkat merchant.</string>
+
     <string name="action_share">Bagikan</string>
     <string name="label_amount">Jumlah</string>
     <string name="label_merchant">Penyedia:</string>
@@ -24,6 +31,4 @@
     <string name="button_buy">Beli</string>
     <string name="progress_buying">Pembayaran sedang diproses</string>
     <string name="buy_successful">Transaksi berhasil</string>
-
-    <string name="nfc_prompt">Tempelkan bagian belakang perangkat Anda dengan perangkat merchant.</string>
 </resources>
