@@ -12,8 +12,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/logo_nfc"/>
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:id="@+id/name"
@@ -22,7 +21,6 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_toRightOf="@id/picture"
-        android:text="aisukjbdkasjdnm"
         android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
@@ -36,7 +34,6 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="5dp"
         android:layout_toRightOf="@id/picture"
-        android:text="aksjbdkanjs,dm"
         android:textSize="14sp"/>
 
     <View
