@@ -63,8 +63,8 @@ export default class JenioInitModal extends Component {
                             </Heading>
                         </Box>
                         {
-                            submitting ? 
-                                <Spinning size='medium' /> : 
+                            submitting ?
+                                <Spinning size='medium' /> :
                                 <Box pad={{ vertical: 'small', horizontal: 'none' }}>
                                     <input
                                         ref='tokenField'
@@ -72,7 +72,7 @@ export default class JenioInitModal extends Component {
                                         value={barcode}
                                         onChange={(e) => this.setState({ barcode: e.target.value })}
                                         onKeyPress={this._handleKeyPress} />
-                                </Box>                                        
+                                </Box>
                         }
                     </Box>
                     <Box
@@ -92,28 +92,28 @@ export default class JenioInitModal extends Component {
 
     _handleKeyPress(e) {
         if (e.key === 'Enter') {
-            this.setState({ submitting: true })                            
-            
+            this.setState({ submitting: true })
+
             const { baseApiUrl, merchantId } = appConfig
-            const transactionData = e.target.value.split(',');
-            const buyerId = transactionData[0];
-            const signed_token = transactionData[1];
+            //NZ55eF1jFXbcERtc5U6veVGZEff8UK1ck1+c/dsKFWDA4WR8NTdlY2EyNmRkNDA1MGQxMzYxNjEzMWFl
+            const signedToken = e.target.value;
             const token = this.state.token;
 
-            if (!buyerId || !signed_token) {
+            if (!signedToken) {
                 alert('invalid input format')
                 this.props.toggleJenioInitModal()
                 this.props.toggleJenioFailedModal()
             } else {
                 const formData = new FormData();
-                formData.append('sender', buyerId);
-                formData.append('receiver', merchantId);
+                formData.append('token', token);
+                formData.append('signed_token', signedToken);
+                formData.append('merchant_id', merchantId);
                 formData.append('amount', 82000);
-                axios.post(`${baseApiUrl}/transfer`, formData, {
+                axios.post(`${baseApiUrl}/transaction/offline`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 })
                 .then(res => {
-                    this.setState({ barcode: '', submitting: false })          
+                    this.setState({ barcode: '', submitting: false })
                     this.props.toggleJenioInitModal()
                     if (res.data.amount) {
                         this.props.setBalance(res.data.amount)
