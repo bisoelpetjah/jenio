@@ -10,11 +10,11 @@ import javax.crypto.spec.SecretKeySpec
  */
 object CryptoUtils {
     fun b64e(bytes: ByteArray): String {
-        return String(Base64.encode(bytes, Base64.DEFAULT))
+        return String(Base64.encode(bytes, Base64.NO_WRAP))
     }
 
     fun b64d(string: String): ByteArray {
-        return Base64.decode(string, Base64.DEFAULT)
+        return Base64.decode(string, Base64.NO_WRAP)
     }
 
     fun generateSecret(size: Int): ByteArray {
