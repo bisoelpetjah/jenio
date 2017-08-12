@@ -1,55 +1,40 @@
 export const catalog = [
     {
-        img: 'http://i1.adis.ws/i/boohooamplience/azz03030_black_xl?$product_page_main_magic_zoom$',
-        label: 'Kumala Blouse',
-        price: '$20.00'
+        img: 'https://cdn.vox-cdn.com/thumbor/GzLXR1alcqLTr-JJArF0mqXIUpc=/cdn.vox-cdn.com/uploads/chorus_asset/file/3587946/oo04-09_1316tt.0.png',
+        label: 'Macbook Pro 2015',
+        price: 'Rp 15.000.000'
     },
     {
-        img: 'http://assets.myntassets.com/assets/images/1639356/2016/11/28/11480329892483-Marie-Claire-Women-Blue-Printed-Fit-and-Flare-Dress-5931480329892316-3.jpg',
-        label: 'Magina Dress',
-        price: '$27.50'
+        img: 'https://id-live-01.slatic.net/p/16/hotel-beras-merah-organic-premium-2-kg-1474266923-7583269-e87ea137957fdb1a78fb17265ec7851e.jpg',
+        label: 'Beras premium',
+        price: 'Rp 50.000'
     },
     {
-        img: 'http://demandware.edgesuite.net/sits_pod29/dw/image/v2/AAXX_PRD/on/demandware.static/-/Sites-bcbg-site-catalog/default/dw28440065/images/large/UVE68K08_001_a.jpg?sw=500&sh=791&sm=fit',
-        label: 'Moccachino See Thru',
-        price: '$32.00'
+        img: 'http://www.mesinkemasan.co/wp-content/uploads/2013/09/galon-19-liter.jpg',
+        label: 'Galon air',
+        price: 'Rp 16.000'
     },
     {
-        img: 'https://sits-pod29.demandware.net/dw/image/v2/AAXX_PRD/on/demandware.static/-/Sites-bcbg-site-catalog/default/dw8eef59d6/images/large/WWR65L28_G75.jpg?sw=1268&sh=1992&sm=fit',
-        label: 'Opera Americana Long',
-        price: '$15.00'
+        img: 'https://bandwagon-gig-finder.s3.amazonaws.com/editorials/uploads/pictures/4162/content_14184394_10154495231566613_4749992746522866665_n.jpg',
+        label: 'Raisa - Handmade Tour 2016',
+        price: 'Rp 250.000'
     },
     {
-        img: 'https://cdn.tobi.com/product_images/md/1/grey-emalea-multi-strap-skater-dress.jpg',
-        label: 'Tinderella Leaves',
-        price: '$25.00'
-    },
-    {
-        img: 'https://cdn.lulus.com/images/product/xlarge/2136492_394102.jpg',
-        label: 'Sophia A Line Blouse',
-        price: '$40.00'
+        img: 'http://www.roxcalibur.com/posters/p1263.JPG',
+        label: 'Linkin Park - Somewhere I Belong',
+        price: 'Rp 1.000.000'
     },
 ];
 
 export const cart = [
     {
-        name: 'Kumala Blouse',
+        name: 'Beras premium',
         amount: 1,
-        price: '20.00'
+        price: '50.000'
     },
     {
-        name: 'Tinderella Leaves',
+        name: 'Galon air',
         amount: 2,
-        price: '50.00'
+        price: '32.000'
     },
-    {
-        name: 'Sophia A Line Blouse',
-        amount: 1,
-        price: '40.00'
-    },
-    {
-        name: 'Tax',
-        amount: '',
-        price: '11.00'
-    }
 ]

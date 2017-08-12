@@ -11,7 +11,7 @@ export default class AppHeader extends Component {
             <Header
                 direction='row'
                 full='horizontal'
-                colorIndex='neutral-2-a'>
+                colorIndex='accent-1'>
                 <Box
                     basis='1/2'
                     pad='small'>
@@ -23,7 +23,7 @@ export default class AppHeader extends Component {
                             tag='h2'
                             strong
                             margin='none'>
-                            <CartIcon size='medium' colorIndex='light-1' />  Sophie's Store <i>admin</i>
+                            <CartIcon size='medium' colorIndex='light-1' />  tokoku.jenio.com <i>kasir</i>
                         </Heading>
                     </Link>
                 </Box>
@@ -32,16 +32,24 @@ export default class AppHeader extends Component {
                     pad={{ horizontal: 'small', vertical: 'none' }}
                     direction='row'
                     justify='end'>
-                    <Box pad='small'>
-                        Inventory
-                    </Box>
-                    <Box pad='small'>
-                        Accounting
-                    </Box>
+                    <a
+                        href='http://139.59.120.226:1337/user/57eca265d4050d13616131ad/showcase'
+                        style={{ color: '#f5f5f5' }}>
+                        <Box pad='small'>
+                            KATALOG
+                        </Box>
+                    </a>
+                    <a
+                        href='http://139.59.120.226:1337/user/57eca265d4050d13616131ad/chart'
+                        style={{ color: '#f5f5f5' }}>
+                        <Box pad='small'>
+                            CHART
+                        </Box>
+                    </a>
                     <Box
                         pad='small'
-                        colorIndex='neutral-2-t'>
-                        Cashier
+                        colorIndex='neutral-1-a'>
+                        KASIR
                     </Box>
                 </Box>
             </Header>

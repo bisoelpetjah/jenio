@@ -62,7 +62,7 @@ export default class Cart extends Component {
                     </Table>
                     <Box pad='small'>
                         <Button
-                            label='CHARGE CUSTOMER $121'
+                            label='CHARGE CUSTOMER Rp 82.000'
                             onClick={this.props.togglePaymentModal}
                             primary={true} />
                     </Box>
