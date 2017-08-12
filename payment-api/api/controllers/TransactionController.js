@@ -74,14 +74,14 @@ module.exports = {
         return Transfer.create({
           sender: userId,
           receiver: merchantId,
-          amount: amount
+          amount
         })
       })
-      .then(() => {
-        res.json({ success: 'success.'})
+      .then(({ amount }) => {
+        res.json({ success: 'success.', amount })
       })
       .catch((e) => {
-        res.json({'error': e.message})
+        res.status(400).json({ 'error': e.message })
       })
   }
 }
