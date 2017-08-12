@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    
+
     item_id: {
       type: 'string',
       defaultsTo: function() {
@@ -64,7 +64,7 @@ module.exports = {
       return User.findOne(this.merchant)
     },
 
-  }, 
+  },
 
   beforeCreate: function (val, cb) {
     text = val.item_id
@@ -78,19 +78,19 @@ module.exports = {
       "LAYOUT": {
         "COLORBG": "ffffff",
         "GRADIENT_TYPE": "NO_GR",
-        "COLOR1": "ff9934"
+        "COLOR1": "02a8e6"
       },
       "EYES": {
         "EYE_TYPE": "Spike",
-        "COLOR_EHG": "005e6a",
-        "COLOR_EHD": "005e6a",
-        "COLOR_EBG": "005e6a",
-        "COLOR_IHG": "005e6a",
-        "COLOR_IHD": "005e6a",
-        "COLOR_IBG": "005e6a"
+        "COLOR_EHG": "028dce",
+        "COLOR_EHD": "028dce",
+        "COLOR_EBG": "028dce",
+        "COLOR_IHG": "028dce",
+        "COLOR_IHD": "028dce",
+        "COLOR_IBG": "028dce"
       },
       "LOGO": {
-        "L_NAME": "http://i.imgur.com/H5iVPIA.png",
+        "L_NAME": "http://i.imgur.com/FdJHlXh.png",
         "EXCAVATE": true
       },
       "E": "H",
@@ -110,8 +110,6 @@ module.exports = {
         }
         cb()
     })
-    // val.qr = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
-    // cb()
   }
 
 }
