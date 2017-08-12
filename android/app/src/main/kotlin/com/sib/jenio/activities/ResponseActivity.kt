@@ -2,11 +2,15 @@ package com.sib.jenio.activities
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.DisplayMetrics
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
 import com.sib.jenio.R
 
 /**
@@ -61,8 +65,36 @@ class ResponseActivity: AppCompatActivity() {
         return token
     }
 
-    private fun generateQr(text: String): Bitmap? {
-        // TODO: generate QR code
-        return null
+    private fun generateQr(text: String): Bitmap {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayWidth = displayMetrics.widthPixels
+        val displayHeight = displayMetrics.heightPixels
+
+        val dimension = (Math.min(displayWidth, displayHeight) * .9).toInt()
+
+        val writer = MultiFormatWriter()
+        val result = writer.encode(text, BarcodeFormat.QR_CODE, dimension, dimension, null)
+
+        val width = result.width
+        val height = result.height
+
+        val blockColor = ContextCompat.getColor(this, R.color.colorPrimary)
+        val spaceColor = ContextCompat.getColor(this, android.R.color.transparent)
+
+        val pixels = IntArray(width * height)
+
+        repeat(height, { y ->
+            val offset = y * width
+
+            repeat(width, { x ->
+                pixels[offset + x] = if (result[x, y]) blockColor else spaceColor
+            })
+        })
+
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
+
+        return bitmap
     }
 }
