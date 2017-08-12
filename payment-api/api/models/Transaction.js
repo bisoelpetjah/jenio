@@ -71,10 +71,14 @@ module.exports = {
           sender: proms[1],
           amount: proms[2].price * val.amount
         })
-        p1 = Item.update(proms[2], {stock: proms[2].stock - val.amount})
+        p1 = Item
+          .update(proms[2].id, {stock: proms[2].stock - val.amount})
+          .catch((e) => console.log(e.message))
         return Promise.all([p0, p1])
       })
-      .then(function () { cb() })
+      .then(function (p) {
+        cb()
+      })
   }
 }
 

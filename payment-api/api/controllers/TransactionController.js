@@ -11,7 +11,7 @@ module.exports = {
     item_uuid = req.body['item']
     customer_id = req.body['customer']
     amount = req.body['amount']
-    Promise
+    return Promise
       .resolve()
       .then(function () {
         return Item
@@ -28,7 +28,9 @@ module.exports = {
       .then(function (transaction) {
         res.json({})
       })
-      .catch(console.log)
+      .catch((e) => {
+        res.json({'error':e.message})
+      })
   }
 }
 
