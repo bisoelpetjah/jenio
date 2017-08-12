@@ -24,6 +24,11 @@ export const catalog = [
         label: 'Linkin Park - Somewhere I Belong',
         price: 'Rp 1.000.000'
     },
+    {
+        img: 'http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c03087401.png',
+        label: 'HP ENVY',
+        price: 'Rp 15.000.000'
+    },
 ];
 
 export const cart = [

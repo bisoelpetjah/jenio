@@ -23,7 +23,7 @@ export default class AppHeader extends Component {
                             tag='h2'
                             strong
                             margin='none'>
-                            <CartIcon size='medium' colorIndex='light-1' />  tokoku.jenio.com <i>kasir</i>
+                            <CartIcon size='medium' colorIndex='light-1' />  toserba.jenio.com <i>kasir</i>
                         </Heading>
                     </Link>
                 </Box>
