@@ -1,5 +1,6 @@
 package com.sib.jenio.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -33,6 +34,11 @@ class GenerateActivity: AppCompatActivity() {
         buttonSubmit?.setOnClickListener {
             val token = editToken?.text?.toString()
             if (token?.isNullOrEmpty()!!) return@setOnClickListener
+
+            val intent = Intent(this, ResponseActivity::class.java)
+            intent.putExtra(ResponseActivity.EXTRA_TRANSACTION_TOKEN, token)
+
+            startActivity(intent)
         }
     }
 
