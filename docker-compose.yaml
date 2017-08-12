@@ -23,3 +23,16 @@ services:
       - MONGO_DB=admin
     ports:
       - "1337:1337"
+  pos-frontend:
+    build: pos-frontend
+    container_name: pos-frontend
+    hostname: pos-frontend
+    restart: on-failure
+    links:
+      - payment-api
+    depends_on:
+      - payment-api
+    environment:
+      - BASE_API_URL=http://payment-api:1337
+    ports:
+      - "8080:8080"
