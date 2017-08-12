@@ -41,7 +41,7 @@ class MainActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         buttonScan?.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
-        buttonGenerate?.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
+        buttonGenerate?.setOnClickListener { startActivity(Intent(this, GenerateActivity::class.java)) }
 
         recyclerView?.adapter = homeAdapter
         recyclerView?.layoutManager = LinearLayoutManager(this)

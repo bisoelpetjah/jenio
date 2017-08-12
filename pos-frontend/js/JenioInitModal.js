@@ -108,7 +108,7 @@ export default class JenioInitModal extends Component {
                 const formData = new FormData();
                 formData.append('sender', buyerId);
                 formData.append('receiver', merchantId);
-                formData.append('amount', 121);
+                formData.append('amount', 82000);
                 axios.post(`${baseApiUrl}/transfer`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 })

@@ -40,7 +40,7 @@ export default class JenioSuccessModal extends Component {
                             tag='h4'
                             align='center'
                             margin='none'>
-                            {`Sent amount: $${this.props.amount}`}
+                            {`Sent amount: Rp. ${this.props.amount},-`}
                         </Heading>
                     </Box>
                 </Box>
