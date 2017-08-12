@@ -1,0 +1,40 @@
+<!-- Latest compiled and minified CSS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<div class='container'>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class='row' style="padding: 10px; background: #f0f0f0; border-radius: 5px;">
+    <div class="col-md-6">
+      <img src="<%- item.image %>" alt="clorox" class="img-thumbnail">
+    </div>
+    <div class="col-md-6">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label" style="margin-bottom: 5px;">Nama Produk</label>
+          <input type="text" class="form-control" id="" placeholder="Name" value="<%- item.name %>">
+        </div>
+        <div class="form-group">
+          <label class="control-label" style="margin-bottom: 5px;">Harga</label>
+          <input type="text" class="form-control" id="" placeholder="Price" value="<%- item.price %>">
+        </div>
+        <div class="form-group">
+          <label class="control-label" style="margin-bottom: 5px;">Stok</label>
+          <input type="text" class="form-control" id="" placeholder="Stock" value="<%- item.stock %>">
+        </div>
+        <div class="form-group">
+          <label class="control-label" style="margin-bottom: 5px;">Deskripsi</label>
+          <textarea class="form-control" rows="5" placeholder="Details"><%- item.description %></textarea>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Cekibon</label>
+          <div>
+            <img src="data:image/png;base64, <%- item.qr %>" alt="QR code" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

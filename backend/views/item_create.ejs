@@ -1,0 +1,78 @@
+<!-- Latest compiled and minified CSS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<div class='container'>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class='row' style="padding: 10px; background: #f0f0f0; border-radius: 5px;">
+    <div class="col-md-6">
+      <img
+        id="image_placeholder"
+        src="http://marlborofishandgame.com/images/6/6c/Question-mark.png"
+        alt="image"
+        onError="this.onerror=null;this.src='http://marlborofishandgame.com/images/6/6c/Question-mark.png';"
+        class="img-thumbnail">
+    </div>
+    <div class="col-md-6">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <input id="form_name" type="text" class="form-control" id="" placeholder="Nama Produk" value="">
+        </div>
+        <div class="form-group">
+          <input id="form_price" type="text" class="form-control" id="" placeholder="Harga" value="">
+        </div>
+        <div class="form-group">
+          <input id="form_stock" type="text" class="form-control" id="" placeholder="Stok" value="">
+        </div>
+        <div class="form-group">
+          <input id="form_image" type="text" class="form-control" id="" placeholder="Tautan Gambar" value="">
+        </div>
+        <div class="form-group">
+          <textarea id="form_description" class="form-control" rows="5" placeholder="Deskripsi"></textarea>
+        </div>
+        <div class="form-group">
+          <div>
+            <button id="submit" type="button" class="btn btn-primary btn-lg btn-block">Buat Produk</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#form_image')
+    .change(function() {
+      $('#image_placeholder').attr('src', $('#form_image').val())
+    })
+  $('#submit')
+    .click(function() {
+      payload = {
+        name: $('#form_name').val(),
+        price: $('#form_price').val(),
+        stock: $('#form_stock').val(),
+        image: $('#form_image').val(),
+        description: $('#form_description').val(),
+        merchant: '1',
+      }
+      console.log(payload)
+      $('#submit').html('MOHON TUNGGU ...')
+      $.ajax({
+        type: "POST",
+        url: '/item',
+        data: payload,
+        success: function (data, status) {
+          id = data.id
+          window.location.href = '/item/' + id + '/view'
+        },
+        dataType: 'json'
+      })
+      .fail(function(e) {
+        console.log(e.responseText)
+        alert('ERROR! Name + Price can\'t be null or connection error')
+        $('#submit').html('Buat Produk')
+      })
+    })
+</script>

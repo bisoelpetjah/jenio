@@ -1,0 +1,54 @@
+<!-- Latest compiled and minified CSS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<div class='container-fluid'>
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <div class='row'>
+        <div class="col-md-3" style="margin: 25px; margin-left: 15px; text-align: center; padding: 10px; background: #f0f0f0; border-radius: 5px; font-size: 14px; font-weight: bold;">
+          Transaction history of <%- user.name %>
+        </div>
+
+        <% transactions.forEach(function(transaction, index) { %>
+          <div class="col-md-12">
+            <div class='col-md-4' style="text-align: center; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background: #f0f0f0; border-radius: 5px;">
+              <a href="/item/<%- transaction.item.id %>/view">
+                <div style="height:250px; padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px; 
+                  background-image: url('<%- transaction.item.image %>');
+                  background-repeat: no-repeat;
+                  background-position: top center;
+                  background-size: auto 250.656px;
+                   "></div>
+              </a>
+            </div>
+            <div class='col-md-7' style="text-align: center; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background: #f0f0f0; border-radius: 5px; margin-left: 10px; margin-right: 10px; margin-bottom: 30px;">
+              <div style="height:250px; background: white; width: 100%; text-align: center; padding-top: 5px; padding-left: 10px; padding-right: 10px; padding-bottom: 1px; border-radius: 5px;">
+                <div style="width: 100%; text-align: left; font-size: 20px; font-weight: bold;">
+                  <p><%- transaction.item.name %></p>
+                </div>
+                <div style="width: 100%; font-size: 14px; font-weight: bold; display: table; color: #00549d">
+                  <div style="width: 50%; text-align: left; display: table-cell;">
+                    <p>IDR <%- transaction.item.price %> - <%- transaction.amount %>x</p>
+                  </div>
+                </div>
+                <div style="width: 100%; text-align: left; font-size: 14px;">
+                  <p><%- transaction.item.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+
+      </div>
+    </div>
+    <div class='col-md-2'></div>
+  </div>
+
+  
+</div>

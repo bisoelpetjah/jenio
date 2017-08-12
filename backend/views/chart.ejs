@@ -1,0 +1,113 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div style="padding: 10px; background: #f0f0f0; border-radius: 5px;">
+        <div style="text-align: center; width: 100%; margin-bottom: 15px;">
+            <h3 style="color: black;">PRODUK-PRODUK YANG ANDA BUAT</h3>
+        </div>
+        <canvas id="myChart" width="400" height="100"></canvas>
+        <script>
+            var arrayOfDate = []
+            var iteratedDate
+            <% items.forEach(function(item, index) { %>
+                iteratedDate = new Date("<%- item.date_time %>")
+                arrayOfDate.push(iteratedDate.getDate() + '-' + (iteratedDate.getMonth()+1) + '-' + iteratedDate.getFullYear())
+            <% }) %>
+
+            var date = [], dateCount = [], prev
+            arrayOfDate.reverse()
+
+            for ( var i = 0; i < arrayOfDate.length; i++ ) {
+                if ( arrayOfDate[i] !== prev ) {
+                    date.push(arrayOfDate[i]);
+                    dateCount.push(1);
+                } else {
+                    dateCount[dateCount.length-1]++;
+                }
+                prev = arrayOfDate[i];
+            }
+
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: date,
+                    datasets: [{
+                        label: '# of items created',
+                        data: dateCount,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    <br />
+    <br />
+
+    <div style="padding: 10px; background: #f0f0f0; border-radius: 5px; margin-bottom: 30px;">
+        <div style="text-align: center; width: 100%; margin-bottom: 15px;">
+            <h3 style="color: black;">STATISTIK TRANSAKSI</h3>
+        </div>
+        <canvas id="chart2" width="400" height="100"></canvas>
+        <script>
+            var arrayOfDate2 = []
+            var iteratedDate
+            <% transactions.forEach(function(transaction, index) { %>
+                iteratedDate = new Date("<%- transaction.date_time %>")
+                console.log("---------------")
+                console.log("<%- transaction.date_time %>")
+                arrayOfDate2.push(iteratedDate.getDate() + '-' + (iteratedDate.getMonth()+1) + '-' + iteratedDate.getFullYear())
+            <% }) %>
+
+            var date = [], dateCount = [], prev = ''
+            arrayOfDate2.reverse()
+
+            for ( var i = 0; i < arrayOfDate2.length; i++ ) {
+                if ( arrayOfDate2[i] !== prev ) {
+                    date.push(arrayOfDate2[i]);
+                    dateCount.push(1);
+                } else {
+                    dateCount[dateCount.length-1]++;
+                }
+                prev = arrayOfDate2[i];
+            }
+
+            var ctx = document.getElementById("chart2");
+            var chart2 = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: date,
+                    datasets: [{
+                        label: '# of transactions made',
+                        data: dateCount,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
