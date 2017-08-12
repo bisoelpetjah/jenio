@@ -32,6 +32,6 @@
     <string name="button_submit_token">Bayar</string>
     <string name="instruction_token">Silakan masukkan 6 digit angka dari merchant.</string>
     
-    <string name="instruction_qr">Silakan tunjukkan QR code kepada merchant.</string>
-    <string name="instruction_response">Atau.</string>
+    <string name="instruction_qr">Silakan tunjukkan QR code kepada merchant untuk menyelesaikan transaksi</string>
+    <string name="instruction_response">atau tunjukan jawaban berikut kepada merchant.</string>
 </resources>
