@@ -1,0 +1,9 @@
+node_modules/
+public/components
+npm-debug.log
+.nyc_output
+.sass-cache
+.env
+scripts/testing.js
+
+
