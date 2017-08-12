@@ -30,6 +30,11 @@ module.exports = {
       required: true,
     },
 
+    sharedsecret: {
+      type: 'string',
+      required: false,
+    },
+
     balance: {
       type: 'integer',
       required: false,
