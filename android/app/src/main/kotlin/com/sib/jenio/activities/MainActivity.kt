@@ -72,6 +72,7 @@ class MainActivity: AppCompatActivity() {
             override fun onResponse(call: Call<List<Transaction>>?, response: Response<List<Transaction>>?) {
                 homeAdapter.transactionList.clear()
                 homeAdapter.transactionList.addAll(response?.body() ?: arrayListOf())
+
                 homeAdapter.notifyDataSetChanged()
             }
 
