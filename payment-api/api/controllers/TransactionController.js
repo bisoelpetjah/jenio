@@ -31,6 +31,23 @@ module.exports = {
       .catch((e) => {
         res.json({'error':e.message})
       })
+  },
+
+  createOffline: function(req, res) {
+    token = req.body['token']
+    signed_token = req.body['signed_token']
+    return Promise
+      .resolve()
+      .then(() => {
+        // ...
+        console.log(token, signed_token)
+      })
+      .then((result) => {
+        res.json({})
+      })
+      .catch((e) => {
+        res.json({'error':e.message})
+      })
   }
 }
 
