@@ -122,6 +122,9 @@ export default class JenioInitModal extends Component {
                         this.props.toggleJenioFailedModal()
                     }
                 })
+                .catch(res => {
+                    this.props.toggleJenioFailedModal()
+                })
             }
         }
     }
