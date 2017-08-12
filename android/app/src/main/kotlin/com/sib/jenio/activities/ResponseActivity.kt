@@ -1,5 +1,8 @@
 package com.sib.jenio.activities
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -9,6 +12,7 @@ import android.util.DisplayMetrics
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.sib.jenio.R
@@ -38,6 +42,12 @@ class ResponseActivity: AppCompatActivity() {
 
         supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.title_generate)
+
+        textViewResponse?.setOnClickListener {
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.primaryClip = ClipData.newPlainText(null, textViewResponse?.text)
+            Toast.makeText(this, "Teks telah disalin ke clipboard.", Toast.LENGTH_SHORT).show()
+        }
 
         val token = intent.getStringExtra(EXTRA_TRANSACTION_TOKEN)
 
