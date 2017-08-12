@@ -35,19 +35,12 @@ export default class JenioSuccessModal extends Component {
                             tag='h4'
                             align='center'
                             margin='none'>
-                            (we're showing buyer's balance for demo purpose only, to show that the smart contract is working)
                         </Heading>
                         <Heading
                             tag='h4'
                             align='center'
                             margin='none'>
-                            {`Buyer's balance (before): $${this.props.balance_before}`}
-                        </Heading>
-                        <Heading
-                            tag='h4'
-                            align='center'
-                            margin='none'>
-                            {`Buyer's balance (after): $${this.props.balance_after}`}
+                            {`Sent amount: $${this.props.amount}`}
                         </Heading>
                     </Box>
                 </Box>

@@ -20,8 +20,7 @@ export default class Home extends Component {
             showJenioInitModal: false,
             showJenioSuccessModal: false,
             showJenioFailedModal: false,
-            balance_before: null,
-            balance_after: null,
+            amount: null
         }
 
         this.togglePaymentModal = this.togglePaymentModal.bind(this)
@@ -42,8 +41,8 @@ export default class Home extends Component {
         this.setState({ showJenioSuccessModal: !this.state.showJenioSuccessModal })
     }
 
-    setBalance(balance_before, balance_after) {
-        this.setState({ balance_before, balance_after })
+    setBalance(amount) {
+        this.setState({ amount })
     }
 
     toggleJenioFailedModal() {
@@ -70,15 +69,14 @@ export default class Home extends Component {
                         <JenioInitModal
                             toggleJenioInitModal={this.toggleJenioInitModal}
                             toggleJenioSuccessModal={this.toggleJenioSuccessModal}
-                            setBalance={(balance_before, balance_after) => { this.setBalance(balance_before, balance_after) }}
+                            setBalance={(amount) => { this.setBalance(amount) }}
                             toggleJenioFailedModal={this.toggleJenioFailedModal} />                            
                         : null
                 }
                 {
                     this.state.showJenioSuccessModal ?
                         <JenioSuccessModal
-                            balance_before={this.state.balance_before}
-                            balance_after={this.state.balance_after}
+                            amount={this.state.amount}
                             toggleJenioSuccessModal={this.toggleJenioSuccessModal} />
                         : null
                 }

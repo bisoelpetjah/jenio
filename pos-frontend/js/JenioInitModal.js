@@ -105,17 +105,18 @@ export default class JenioInitModal extends Component {
                 this.props.toggleJenioInitModal()
                 this.props.toggleJenioFailedModal()
             } else {
-                axios.post(`${baseApiUrl}/transfer`, {
-                    sender: buyerId,
-                    receiver: merchantId,
-                    amount: '121'
+                const formData = new FormData();
+                formData.append('sender', buyerId);
+                formData.append('receiver', merchantId);
+                formData.append('amount', 121);
+                axios.post(`${baseApiUrl}/transfer`, formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' },
                 })
                 .then(res => {
                     this.setState({ barcode: '', submitting: false })          
                     this.props.toggleJenioInitModal()
-                    if (res.data.result) {
-                        const { balance_before, balance_after} = res.data.result
-                        this.props.setBalance(balance_before, balance_after)
+                    if (res.data.amount) {
+                        this.props.setBalance(res.data.amount)
                         this.props.toggleJenioSuccessModal()
                     } else {
                         this.props.toggleJenioFailedModal()
