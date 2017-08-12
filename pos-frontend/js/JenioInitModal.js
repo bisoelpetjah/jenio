@@ -105,12 +105,10 @@ export default class JenioInitModal extends Component {
                 this.props.toggleJenioInitModal()
                 this.props.toggleJenioFailedModal()
             } else {
-                axios.post(`${baseApiUrl}/transactions`, {
-                    from: buyerId,
-                    to: merchantId,
-                    signed_token,
-                    token,
-                    value: '121'
+                axios.post(`${baseApiUrl}/transfer`, {
+                    sender: buyerId,
+                    receiver: merchantId,
+                    amount: '121'
                 })
                 .then(res => {
                     this.setState({ barcode: '', submitting: false })          
