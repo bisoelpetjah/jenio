@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 /**
  * Connections
  * (sails.config.connections)
@@ -60,21 +62,13 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  // mongo: {
-  //   adapter: 'sails-mongo',
-  //   host: 'localhost',
-  //   port: 27017,
-  //   // user: 'username', //optional
-  //   // password: 'password', //optional
-  //   database: 'local' //optional
-  // },
   mongo: {
     adapter: 'sails-mongo',
-    url : 'mongodb://admin:ALLPDBMZVCCFCUWP@sl-us-dal-9-portal.3.dblayer.com:15441/admin?ssl=true',
-    mongos: {
-      ssl: true,
-      sslValidate: false
-    }
+    host: process.env.MONGO_HOST,
+    port: process.env.MONGO_PORT,
+    database: process.env.MONGO_DB //optional
+    // user: 'username', //optional
+    // password: 'password', //optional
   },
 
   /***************************************************************************
