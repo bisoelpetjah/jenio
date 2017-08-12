@@ -108,7 +108,7 @@ export default class JenioInitModal extends Component {
                 axios.post(`${baseApiUrl}/transfer`, {
                     sender: buyerId,
                     receiver: merchantId,
-                    amount: '121'
+                    amount: '82000'
                 })
                 .then(res => {
                     this.setState({ barcode: '', submitting: false })          
