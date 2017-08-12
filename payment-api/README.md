@@ -17,3 +17,9 @@
 /user/:id/transaction
 /transaction/create
 ```
+
+USER
+```
+57eca265d4050d13616131ad -> tiket master
+57eca26dd4050d13616131ae -> tino
+```
