@@ -32,7 +32,5 @@ services:
       - payment-api
     depends_on:
       - payment-api
-    environment:
-      - BASE_API_URL=http://payment-api:1337
     ports:
       - "8080:8080"
