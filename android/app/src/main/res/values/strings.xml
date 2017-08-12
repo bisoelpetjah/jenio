@@ -17,12 +17,7 @@
 
     <string name="title_showcase">Katalog</string>
 
-    <string name="title_qr">Scan Cekibon</string>
-
-    <string name="title_nfc_merchant">Pembayaran dengan NFC</string>
-
-    <string name="title_nfc">Scan Cekibon dengan NFC</string>
-    <string name="nfc_prompt">Tempelkan bagian belakang perangkat Anda dengan perangkat merchant.</string>
+    <string name="title_qr">Scan QR Code</string>
 
     <string name="title_buy">Lakukan Pembayaran</string>
     <string name="action_share">Bagikan</string>
